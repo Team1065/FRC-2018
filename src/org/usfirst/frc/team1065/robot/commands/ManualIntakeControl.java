@@ -19,7 +19,7 @@ public class ManualIntakeControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.m_oi.getIntakeInSwitch()){
+    	if(Robot.m_oi.getIntakeInSwitch() && !Robot.m_intake.isCubeDetected()){
     		Robot.m_intake.setIntakeIn(.8);
     	}
     	else if(Robot.m_oi.getIntakeOutSwitch()){
