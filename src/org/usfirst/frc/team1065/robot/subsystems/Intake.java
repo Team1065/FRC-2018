@@ -39,7 +39,7 @@ public class Intake extends Subsystem {
     }
     
     public boolean isCubeDetected(){
-    	return m_cubeSwitch.get();
+    	return !m_cubeSwitch.get();
     }
     
     public void updateStatus(){
