@@ -11,6 +11,11 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
+import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest1;
+import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest2;
+import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest3;
+import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest4;
+import org.usfirst.frc.team1065.robot.subsystems.Arm;
 import org.usfirst.frc.team1065.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1065.robot.subsystems.Intake;
 
@@ -26,6 +31,7 @@ public class Robot extends TimedRobot {
 	public static OI m_oi;
 	public static DriveTrain m_driveTrain;
 	public static Intake m_intake;
+	public static Arm m_arm;
 
 	Command m_autonomousCommand;
 
@@ -34,6 +40,7 @@ public class Robot extends TimedRobot {
 		m_oi = new OI();
 		m_driveTrain = new DriveTrain();
 		m_intake = new Intake();
+		m_arm = new Arm();
 	}
 
 	/**
@@ -55,6 +62,21 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		m_driveTrain.resetAngle();
     	m_driveTrain.resetEncoder();
+    	
+    	Command[] CommandsArray = {
+			new AutoTest1(),
+			new AutoTest2(),
+			new AutoTest3(),
+			new AutoTest4(),
+		};
+    	
+    	/*Selector 
+    	 * 0 == Auto1
+    	 * 1 == Auto2
+    	 * 2 == Auto3
+    	 * 3 == Auto4
+    	*/
+    	int autoSelector = m_oi.getAutoKnobPosition();
 		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
@@ -70,6 +92,7 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 		m_driveTrain.updateStatus();
 		m_intake.updateStatus();
+		m_arm.updateStatus();
 	}
 
 	@Override
@@ -88,6 +111,7 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 		m_driveTrain.updateStatus();
 		m_intake.updateStatus();
+		m_arm.updateStatus();
 	}
 
 	/**
@@ -95,5 +119,8 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		m_driveTrain.updateStatus();
+		m_intake.updateStatus();
+		m_arm.updateStatus();
 	}
 }

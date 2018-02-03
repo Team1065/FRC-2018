@@ -71,4 +71,80 @@ public class OI {
     public boolean getIntakeOutSwitch(){
     	return enhancedDS.getRawButton(RobotMap.INTAKE_OUT_PORT);
     }
+    
+    public double getArmStickY(){
+    	return enhancedDS.getRawAxis(RobotMap.ARM_JOYSTICK_Y_PORT);
+    }
+    
+    public boolean getArmOverride(){
+    	return enhancedDS.getRawButton(RobotMap.ARM_CONTROLL_OVERRIDE);
+    }
+    
+    public double getArmDesiredPosition(){
+    	double speed;
+		double knobValue = enhancedDS.getRawAxis(RobotMap.SHOOTER_KNOB_PORT);
+		double threshold = 0.011;
+		
+		//If Station Knob is at 0
+		if(knobValue < RobotMap.ARM_KNOB_POS_0 + threshold){
+			speed = RobotMap.ARM_POS_0;
+        }
+        //If Station Knob is at 1
+        else if(knobValue >= RobotMap.ARM_KNOB_POS_1 - threshold && knobValue < RobotMap.ARM_KNOB_POS_1 + threshold){
+        	speed = RobotMap.ARM_POS_1;
+        }
+        //If Station Knob is at 2
+        else if(knobValue >= RobotMap.ARM_KNOB_POS_2 - threshold && knobValue < RobotMap.ARM_KNOB_POS_2 + threshold){
+        	speed = RobotMap.ARM_POS_2;
+        }
+        //If Station Knob is at 3
+        else if(knobValue >= RobotMap.ARM_KNOB_POS_3 - threshold && knobValue < RobotMap.ARM_KNOB_POS_3 + threshold){
+        	speed = RobotMap.ARM_POS_3;
+        }
+        //If Station Knob is at 4
+        else if(knobValue >= RobotMap.ARM_KNOB_POS_4 - threshold && knobValue < RobotMap.ARM_KNOB_POS_4 + threshold){
+        	speed = RobotMap.ARM_POS_4;
+        }
+        //If Station Knob is at 5
+        else if(knobValue >= RobotMap.ARM_KNOB_POS_5 - threshold){
+        	speed = RobotMap.ARM_POS_5;
+        }
+        else
+        {
+        	speed = RobotMap.ARM_POS_0;
+        }
+		
+		return speed;
+	}
+    
+    public int getAutoKnobPosition(){
+    	int position;
+		double knobValue = enhancedDS.getRawAxis(RobotMap.AUTO_KNOB_PORT);
+		double threshold = 0.010;
+		
+		//Introduce the use of a switch to double the number of auto modes we are able to select
+		
+		//If Station Knob is at 1
+		if(knobValue < RobotMap.AUTO_KNOB_POS_0 + threshold){
+            position = 0;
+        }
+        //If Station Knob is at 2
+        else if(knobValue >= RobotMap.AUTO_KNOB_POS_1 - threshold && knobValue < RobotMap.AUTO_KNOB_POS_1 + threshold){
+            position = 1;
+        }
+        //If Station Knob is at 3
+        else if(knobValue >= RobotMap.AUTO_KNOB_POS_2 - threshold && knobValue < RobotMap.AUTO_KNOB_POS_2 + threshold){
+            position = 2;
+        }
+        //If Station Knob is at 4
+        else if(knobValue >= RobotMap.AUTO_KNOB_POS_3 - threshold && knobValue < RobotMap.AUTO_KNOB_POS_3 + threshold){
+            position = 3;
+        }
+        else
+        {
+        	position = 0;
+        }
+		
+		return position;
+	}
 }
