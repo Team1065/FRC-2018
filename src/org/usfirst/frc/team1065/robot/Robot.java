@@ -77,6 +77,8 @@ public class Robot extends TimedRobot {
     	 * 3 == Auto4
     	*/
     	int autoSelector = m_oi.getAutoKnobPosition();
+    	
+    	m_autonomousCommand = CommandsArray[autoSelector];
 		
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {

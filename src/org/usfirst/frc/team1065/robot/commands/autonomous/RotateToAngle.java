@@ -29,23 +29,23 @@ public class RotateToAngle extends Command {
     	double motorSpeed = speed;
     	//slow down if close to target
     	if(currentAngle > angle-5 && currentAngle < angle+5){
-    		motorSpeed = motorSpeed * 0.3;
+    		motorSpeed = 0.1;
     	}
     	else if(currentAngle > angle-10 && currentAngle < angle+10){
-    		motorSpeed = motorSpeed * 0.4;
+    		motorSpeed = 0.15;
     	}
     	else if(currentAngle > angle-15 && currentAngle < angle+15){
-    		motorSpeed = motorSpeed * 0.5;
+    		motorSpeed = 0.2;
     	}
     	else if(currentAngle > angle-20 && currentAngle < angle+20){
-    		motorSpeed = motorSpeed * 0.6;
+    		motorSpeed = 0.25;
     	}
     	else if(currentAngle > angle-30 && currentAngle < angle+30){
-    		motorSpeed = motorSpeed * 0.75;
+    		motorSpeed = 0.3;
     	}
     	
-    	if(motorSpeed < .25){
-    		motorSpeed = .25;
+    	if(motorSpeed < .1){
+    		motorSpeed = .1;
     	}
     	
     	//direction of rotation decided based on target angle
@@ -53,7 +53,7 @@ public class RotateToAngle extends Command {
     		motorSpeed = motorSpeed * -1;
     	}
     	
-    	if(Math.abs(Robot.m_driveTrain.getAngle() - angle) < 1.1){
+    	if(Math.abs(Robot.m_driveTrain.getAngle() - angle) < 2.5){
     		motorSpeed = 0;
     		onAngleCounter++;
     	}

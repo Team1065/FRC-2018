@@ -26,28 +26,33 @@ public class DriveToDistance extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double motorSpeed = targetSpeed;
+    	int direction = (int) (targetSpeed/Math.abs(targetSpeed));
     	//Slow  down near the target
     	if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-5){ //slow down in last 5 inches
-    		motorSpeed = motorSpeed * 0.25;
+    		motorSpeed = direction * 0.1;
     	}
     	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-10){ //slow down in last 10 inches
-    		motorSpeed = motorSpeed * 0.4;
+    		motorSpeed = direction * 0.15;
     	}
-    	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-20){ //slow down in last 20 inches
-    		motorSpeed = motorSpeed * 0.5;
+    	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-20 || //slow down in last 20 inches
+    			Math.abs(Robot.m_driveTrain.getEncoderDistance()) < 5){ //slow down in first 5 inches
+    		motorSpeed = direction * 0.25;
+    	}
+    	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-30){ //slow down in last 30 inches
+    		motorSpeed = direction * 0.35;
     	}
     	
     	//minimum speed
-    	if(Math.abs(motorSpeed) < .21){
+    	if(Math.abs(motorSpeed) < .10){
     		
-    		motorSpeed = motorSpeed>0? .21 : -.21;
+    		motorSpeed = direction * .10;
     	}
     	
-    	if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) >= targetDistance+1.25){
+    	if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) >= targetDistance+2){
     		motorSpeed *= -1;
     		atDestinationCounter = 0;
     	}
-    	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) <= targetDistance-1.25){
+    	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) <= targetDistance-2){
     		atDestinationCounter = 0;
     	}
     	else{
@@ -60,7 +65,7 @@ public class DriveToDistance extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return atDestinationCounter > 10 || this.isTimedOut();
+        return atDestinationCounter > 5 || this.isTimedOut();
     }
 
     // Called once after isFinished returns true
