@@ -8,16 +8,43 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveToDistance extends Command {
-	double targetSpeed, targetDistance;
+	double targetSpeed, targetDistance, targetAngle;
 	int atDestinationCounter;
+	boolean endByStopping;
 	//set speed negative to go backwards
     public DriveToDistance(double speed, double distance, double time) {
     	requires(Robot.m_driveTrain);
     	targetSpeed = speed;
         targetDistance = Math.abs(distance);
+        targetAngle = Robot.m_driveTrain.getAngle();
         this.setTimeout(time);
     }
-
+    
+    public DriveToDistance(double speed, double distance, double time, boolean stop) {
+    	requires(Robot.m_driveTrain);
+    	targetSpeed = speed;
+        targetDistance = Math.abs(distance);
+        targetAngle = Robot.m_driveTrain.getAngle();
+        endByStopping = stop;
+        this.setTimeout(time);
+    }
+    
+    public DriveToDistance(double speed, double distance, double angle, double time) {
+    	requires(Robot.m_driveTrain);
+    	targetSpeed = speed;
+        targetDistance = Math.abs(distance);
+        targetAngle = angle;
+        this.setTimeout(time);
+    }
+    
+    public DriveToDistance(double speed, double distance, double angle, double time, boolean stop) {
+    	requires(Robot.m_driveTrain);
+    	targetSpeed = speed;
+        targetDistance = Math.abs(distance);
+        targetAngle = angle;
+        endByStopping = stop;
+        this.setTimeout(time);
+    }
     
     protected void initialize() {
     	Robot.m_driveTrain.resetEncoder();
@@ -60,7 +87,7 @@ public class DriveToDistance extends Command {
     		atDestinationCounter++;
     	}
     	
-    	Robot.m_driveTrain.straightDrive(motorSpeed);
+    	Robot.m_driveTrain.straightDrive(motorSpeed, targetAngle);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -70,7 +97,9 @@ public class DriveToDistance extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.m_driveTrain.tankDrive(0, 0);
+    	if(endByStopping){
+    		Robot.m_driveTrain.tankDrive(0, 0);
+    	}
     }
 
     // Called when another command which requires one or more of the same

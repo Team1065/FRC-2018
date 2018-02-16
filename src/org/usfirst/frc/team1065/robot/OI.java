@@ -72,6 +72,10 @@ public class OI {
     	return enhancedDS.getRawButton(RobotMap.INTAKE_OUT_PORT);
     }
     
+    public boolean getCompressorOverride(){
+    	return enhancedDS.getRawButton(RobotMap.COMPRESSOR_CONTROL_OVERRIDE);
+    }
+    
     public double getArmStickY(){
     	return enhancedDS.getRawAxis(RobotMap.ARM_JOYSTICK_Y_PORT);
     }

@@ -7,21 +7,16 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *Positive is In
  */
-public class SetIntake extends Command {
-    double value;
-    public SetIntake(double value, double timeout) {
+public class IntakeCubeForTime extends Command {
+    public IntakeCubeForTime(double timeout) {
         requires(Robot.m_intake);
-        this.value = value;
         this.setTimeout(timeout);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	if(value > 0 && !Robot.m_intake.isCubeDetected()){
-    		Robot.m_intake.setIntakeIn(value);
-    	}
-    	else if (value < 0){
-    		Robot.m_intake.setIntakeOut(value);
+    	if(!Robot.m_intake.isCubeDetected()){
+    		Robot.m_intake.setIntakeIn(.8);
     	}
     	else
     	{
@@ -36,7 +31,7 @@ public class SetIntake extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return this.isTimedOut();
+    	return this.isTimedOut() || Robot.m_intake.isCubeDetected();
     }
 
     // Called once after isFinished returns true

@@ -25,16 +25,21 @@ public class RobotMap {
 	//PID Constants
     public static final double MECANUM_STRAIGHT_DRIVE_P = 0.05,
     		                   ARM_F = 0,
-	                		   ARM_P = 0,//TODO: tune PID thru web tool first
+	                		   ARM_P = 0.125,//TODO: tune PID thru web tool first (50% one rotation away)
             				   ARM_I = 0,
-    						   ARM_D = 0;
+    						   ARM_D = 0.0001;
 	//Double Constants
     public static final double JOYSTICK_DEADBAND = 0.05,
 			                   DRIVE_STRAIGHT_BAND_PERCENTAGE = 0.25,
 	    					   DRIVE_WHEEL_DIAMETER = 6,
 							   DRIVE_ENCODERS_COUNTS_PER_REV = 20,
 							   ARM_JOYSTICK_MIDDLE = 0.063,
-							   ARM_JOYSTICK_DEADBAND = 0.01;
+							   ARM_JOYSTICK_DEADBAND = 0.01,
+							   ARM_RETRACTED_LOWER_LIMIT = 1000,
+							   ARM_RETRACTED_HIGHER_LIMIT = 2000;
+    
+    //Int Constants
+    public static final int ARM_ERROR = 100;//4098 is 1 full rotation
 	
 	//PWM Ports
     public static final int LEFT_FRONT_DRIVE_MOTOR_PORT = 0,
@@ -48,7 +53,8 @@ public class RobotMap {
     						SLAVE_TALON_PORT = 2;
     
 	//PCM Ports
-    public static final int DROPDOWN_SOLENOID_PORT = 1;
+    public static final int DROPDOWN_SOLENOID_PORT = 1,
+    						ARM_SOLENOID_PORT = 2;
     
 	//Digital Ports
     public static final int DRIVE_ENCODER_PORT_A = 0,
@@ -59,6 +65,7 @@ public class RobotMap {
     public static final int LEFT_JOYSTICK_PORT = 0,					//usb
 					  		RIGHT_JOYSTICK_PORT = 1,				//usb
 				  			ENHANCED_DS_PORT = 2,					//usb
+				  			COMPRESSOR_CONTROL_OVERRIDE = 2,		//Digital
     						INTAKE_IN_PORT = 4,						//Digital
 							INTAKE_OUT_PORT = 5,					//Digital
 							ARM_CONTROLL_OVERRIDE = 9,				//Digital

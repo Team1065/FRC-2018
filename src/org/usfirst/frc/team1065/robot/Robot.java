@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team1065.robot;
 
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -32,6 +33,7 @@ public class Robot extends TimedRobot {
 	public static DriveTrain m_driveTrain;
 	public static Intake m_intake;
 	public static Arm m_arm;
+	public static Compressor compressor;
 
 	Command m_autonomousCommand;
 
@@ -41,6 +43,7 @@ public class Robot extends TimedRobot {
 		m_driveTrain = new DriveTrain();
 		m_intake = new Intake();
 		m_arm = new Arm();
+		compressor = new Compressor();
 	}
 
 	/**
@@ -114,6 +117,13 @@ public class Robot extends TimedRobot {
 		m_driveTrain.updateStatus();
 		m_intake.updateStatus();
 		m_arm.updateStatus();
+		
+		if(m_oi.getCompressorOverride()){
+        	compressor.setClosedLoopControl(false);
+        }
+        else{
+        	compressor.setClosedLoopControl(true);
+        }
 	}
 
 	/**

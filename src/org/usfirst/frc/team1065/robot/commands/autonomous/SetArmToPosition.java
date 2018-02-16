@@ -1,17 +1,18 @@
-package org.usfirst.frc.team1065.robot.commands;
+package org.usfirst.frc.team1065.robot.commands.autonomous;
 
 import org.usfirst.frc.team1065.robot.Robot;
-import org.usfirst.frc.team1065.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ManualArmControl extends Command {
-
-    public ManualArmControl() {
+public class SetArmToPosition extends Command {
+	double m_position;
+    public SetArmToPosition(double position, double timeout) {
         requires(Robot.m_arm);
+        m_position = position;
+        this.setTimeout(timeout);
     }
 
     // Called just before this Command runs the first time
@@ -21,26 +22,17 @@ public class ManualArmControl extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Robot.m_oi.getArmOverride()){
-    		//pick a switch to control arm solenoid manual operation.
     		Robot.m_arm.retractSolenoid(true);
-    		
-    		double ArmStickY = Robot.m_oi.getArmStickY();
-        	
-        	if(Math.abs(ArmStickY - RobotMap.ARM_JOYSTICK_MIDDLE) > RobotMap.ARM_JOYSTICK_DEADBAND){
-        		Robot.m_arm.setVoltage((ArmStickY - RobotMap.ARM_JOYSTICK_MIDDLE)/RobotMap.ARM_JOYSTICK_MIDDLE);
-        	}
-        	else {
-        		Robot.m_arm.setVoltage(0);
-        	}
+        	Robot.m_arm.setVoltage(0);
     	}
     	else{
-    		Robot.m_arm.setPosition(Robot.m_oi.getArmDesiredPosition());
+    		Robot.m_arm.setPosition(m_position);
     	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return this.isTimedOut();
     }
 
     // Called once after isFinished returns true
