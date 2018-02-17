@@ -67,7 +67,7 @@ public class RotateToAngle extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	return onAngleCounter > 5  || this.isTimedOut();
+    	return onAngleCounter > 3  || this.isTimedOut();
     }
 
     // Called once after isFinished returns true

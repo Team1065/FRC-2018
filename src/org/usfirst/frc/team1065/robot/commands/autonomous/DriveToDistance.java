@@ -61,11 +61,11 @@ public class DriveToDistance extends Command {
     	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-10){ //slow down in last 10 inches
     		motorSpeed = direction * 0.15;
     	}
-    	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-20 || //slow down in last 20 inches
-    			Math.abs(Robot.m_driveTrain.getEncoderDistance()) < 5){ //slow down in first 5 inches
+    	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-20){ //slow down in first 5 inches
     		motorSpeed = direction * 0.25;
     	}
-    	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-30){ //slow down in last 30 inches
+    	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-30 || //slow down in last 30 inches 
+    			Math.abs(Robot.m_driveTrain.getEncoderDistance()) < 5){ //slow down in last 20 inches
     		motorSpeed = direction * 0.35;
     	}
     	
@@ -83,7 +83,9 @@ public class DriveToDistance extends Command {
     		atDestinationCounter = 0;
     	}
     	else{
-    		motorSpeed = 0;
+    		if(endByStopping){
+    			motorSpeed = 0;
+    		}
     		atDestinationCounter++;
     	}
     	
@@ -92,7 +94,12 @@ public class DriveToDistance extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return atDestinationCounter > 5 || this.isTimedOut();
+    	if(endByStopping){
+    		return atDestinationCounter > 3 || this.isTimedOut();
+    	}
+    	else{
+    		return atDestinationCounter > 0 || this.isTimedOut();
+    	}
     }
 
     // Called once after isFinished returns true

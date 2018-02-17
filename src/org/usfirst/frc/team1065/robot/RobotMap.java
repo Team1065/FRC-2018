@@ -15,12 +15,12 @@ package org.usfirst.frc.team1065.robot;
  */
 public class RobotMap {
 	//Shooter RPM values
-    public static final double ARM_POS_0 = 0.0,//TODO: get postion thru web tool first
-							   ARM_POS_1 = 0.0,
-    						   ARM_POS_2 = 0.0,
-    						   ARM_POS_3 = 0.0,
-    						   ARM_POS_4 = 0.0,
-    						   ARM_POS_5 = 0.0;
+    public static final double ARM_POS_0 = 100.0,//TODO: get postion thru web tool first
+							   ARM_POS_1 = 400.0,
+    						   ARM_POS_2 = 800.0,
+    						   ARM_POS_3 = 1200.0,
+    						   ARM_POS_4 = 1600.0,
+    						   ARM_POS_5 = 2000.0;
 	
 	//PID Constants
     public static final double MECANUM_STRAIGHT_DRIVE_P = 0.05,
@@ -46,7 +46,8 @@ public class RobotMap {
     				  	    RIGHT_FRONT_DRIVE_MOTOR_PORT = 1,
 		  	    			LEFT_BACK_DRIVE_MOTOR_PORT = 2,
     				  	    RIGHT_BACK_DRIVE_MOTOR_PORT = 3,
-			  	    		INTAKE_MOTOR_PORT = 4 ;
+			  	    		INTAKE_MOTOR_PORT = 4,
+	  	    				CLIMBER_MOTOR_PORT = 5;
     
     //CANTalon Ports
     public static final int MASTER_TALON_PORT = 1,
@@ -68,6 +69,8 @@ public class RobotMap {
 				  			COMPRESSOR_CONTROL_OVERRIDE = 2,		//Digital
     						INTAKE_IN_PORT = 4,						//Digital
 							INTAKE_OUT_PORT = 5,					//Digital
+							CLIMB_UP_PORT = 6,						//Digital
+						    CLIMB_DOWN_PORT = 8,					//Digital
 							ARM_CONTROLL_OVERRIDE = 9,				//Digital
 							SHOOTER_KNOB_PORT = 0,					//Analog
 				    		AUTO_KNOB_PORT = 1,                     //Analog

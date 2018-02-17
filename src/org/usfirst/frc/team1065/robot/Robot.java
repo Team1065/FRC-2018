@@ -8,15 +8,21 @@
 package org.usfirst.frc.team1065.robot;
 
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
+import org.usfirst.frc.team1065.robot.commands.CrossLine;
+import org.usfirst.frc.team1065.robot.commands.autonomous.AutoCenter;
+import org.usfirst.frc.team1065.robot.commands.autonomous.AutoLeftSide;
+import org.usfirst.frc.team1065.robot.commands.autonomous.AutoRightSide;
 import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest1;
 import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest2;
 import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest3;
 import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest4;
 import org.usfirst.frc.team1065.robot.subsystems.Arm;
+import org.usfirst.frc.team1065.robot.subsystems.Climber;
 import org.usfirst.frc.team1065.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1065.robot.subsystems.Intake;
 
@@ -33,7 +39,8 @@ public class Robot extends TimedRobot {
 	public static DriveTrain m_driveTrain;
 	public static Intake m_intake;
 	public static Arm m_arm;
-	public static Compressor compressor;
+	public static Climber m_climber;
+	public static Compressor m_compressor;
 
 	Command m_autonomousCommand;
 
@@ -43,7 +50,8 @@ public class Robot extends TimedRobot {
 		m_driveTrain = new DriveTrain();
 		m_intake = new Intake();
 		m_arm = new Arm();
-		compressor = new Compressor();
+		m_climber = new Climber();
+		m_compressor = new Compressor();
 	}
 
 	/**
@@ -66,23 +74,50 @@ public class Robot extends TimedRobot {
 		m_driveTrain.resetAngle();
     	m_driveTrain.resetEncoder();
     	
+    	/*Position Selector 
+    	 * 0 == Left Start Position
+    	 * 1 == Center Start Position
+    	 * 2 == Right Start Position
+    	 * 3 == Right Start Position (Copy for redundancy
+    	*/
+    	int autoPositionSelector = m_oi.getAutoKnobPosition();
+    	
+    	//Getting data from FMS on switch and scale position
+    	String gameData;
+		gameData = DriverStation.getInstance().getGameSpecificMessage();
+        if(gameData.length() > 0){
+        	boolean switchOnLeft = gameData.charAt(0) == 'L' ? true:false;
+        	boolean scaleOnLeft = gameData.charAt(0) == 'L' ? true:false;
+        	
+        	Command[] CommandsArray = {
+        			//maybe add priority (switch, scale)
+        			new AutoLeftSide(switchOnLeft,scaleOnLeft),
+        			new AutoCenter(switchOnLeft,scaleOnLeft),
+        			new AutoRightSide(switchOnLeft,scaleOnLeft),
+        			new AutoRightSide(switchOnLeft,scaleOnLeft),
+    		};
+        	m_autonomousCommand = CommandsArray[autoPositionSelector];
+        }
+        else{
+        	Command[] CommandsArray = {
+        			//maybe add priority (switch, scale)
+        			new CrossLine(),
+        			new CrossLine(),
+        			new CrossLine(),
+        			new CrossLine(),
+    		};
+        	m_autonomousCommand = CommandsArray[autoPositionSelector];
+        }
+    	/*
     	Command[] CommandsArray = {
 			new AutoTest1(),
 			new AutoTest2(),
 			new AutoTest3(),
 			new AutoTest4(),
 		};
-    	
-    	/*Selector 
-    	 * 0 == Auto1
-    	 * 1 == Auto2
-    	 * 2 == Auto3
-    	 * 3 == Auto4
-    	*/
-    	int autoSelector = m_oi.getAutoKnobPosition();
-    	
-    	m_autonomousCommand = CommandsArray[autoSelector];
-		
+		m_autonomousCommand = CommandsArray[autoPositionSelector];
+		*/
+
 		// schedule the autonomous command (example)
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.start();
@@ -119,10 +154,10 @@ public class Robot extends TimedRobot {
 		m_arm.updateStatus();
 		
 		if(m_oi.getCompressorOverride()){
-        	compressor.setClosedLoopControl(false);
+			m_compressor.setClosedLoopControl(false);
         }
         else{
-        	compressor.setClosedLoopControl(true);
+        	m_compressor.setClosedLoopControl(true);
         }
 	}
 

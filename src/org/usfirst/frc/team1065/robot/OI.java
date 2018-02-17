@@ -76,6 +76,14 @@ public class OI {
     	return enhancedDS.getRawButton(RobotMap.COMPRESSOR_CONTROL_OVERRIDE);
     }
     
+    public boolean getClimberUpSwitch(){
+    	return enhancedDS.getRawButton(RobotMap.CLIMB_UP_PORT);
+    }
+    
+    public boolean getClimberDownSwitch(){
+    	return enhancedDS.getRawButton(RobotMap.CLIMB_DOWN_PORT);
+    }
+    
     public double getArmStickY(){
     	return enhancedDS.getRawAxis(RobotMap.ARM_JOYSTICK_Y_PORT);
     }
