@@ -13,7 +13,6 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 
-import org.usfirst.frc.team1065.robot.commands.CrossLine;
 import org.usfirst.frc.team1065.robot.commands.autonomous.AutoCenter;
 import org.usfirst.frc.team1065.robot.commands.autonomous.AutoLeftSide;
 import org.usfirst.frc.team1065.robot.commands.autonomous.AutoRightSide;
@@ -21,6 +20,7 @@ import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest1;
 import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest2;
 import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest3;
 import org.usfirst.frc.team1065.robot.commands.autonomous.AutoTest4;
+import org.usfirst.frc.team1065.robot.commands.autonomous.CrossLine;
 import org.usfirst.frc.team1065.robot.subsystems.Arm;
 import org.usfirst.frc.team1065.robot.subsystems.Climber;
 import org.usfirst.frc.team1065.robot.subsystems.DriveTrain;

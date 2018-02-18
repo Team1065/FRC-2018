@@ -7,6 +7,7 @@ import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.FeedbackDevice;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -17,8 +18,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class Arm extends Subsystem {
 	private TalonSRX m_masterTalon, m_slaveTalon;
 	private Solenoid m_solenoid;
+	private DigitalInput bottomLimitSwitch, topLimitSwitch;
 	
 	public Arm(){
+		bottomLimitSwitch = new DigitalInput(RobotMap.ARM_BOTTOM_SWITCH_PORT);
+		topLimitSwitch = new DigitalInput(RobotMap.ARM_TOP_SWITCH_PORT);
 		m_solenoid = new Solenoid(RobotMap.ARM_SOLENOID_PORT);
 		
 		m_masterTalon = new TalonSRX(RobotMap.MASTER_TALON_PORT);
@@ -73,11 +77,25 @@ public class Arm extends Subsystem {
     	else{
     		retractSolenoid(false);
     	}
-    	m_masterTalon.set(ControlMode.Position,position);
+    	//assume normally open switches
+    	if((position < m_masterTalon.getSelectedSensorPosition(0) && !bottomLimitSwitch.get()) || 
+    			(position > m_masterTalon.getSelectedSensorPosition(0) && !topLimitSwitch.get())){
+    		m_masterTalon.set(ControlMode.PercentOutput, 0);
+    	}
+    	else{
+    		m_masterTalon.set(ControlMode.Position,position);
+    	}
+    	
     }
 
     public void setVoltage(double speed) {
-    	m_masterTalon.set(ControlMode.PercentOutput, speed);
+    	//assume normally open switches
+    	if((speed < 0 && !bottomLimitSwitch.get()) || (speed > 0 && !topLimitSwitch.get())){
+    		m_masterTalon.set(ControlMode.PercentOutput, 0);
+    	}
+    	else{
+    		m_masterTalon.set(ControlMode.PercentOutput, speed);
+    	}
     }
     
     public boolean isOnTarget(){
