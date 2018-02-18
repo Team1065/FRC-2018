@@ -83,8 +83,17 @@ public class Robot extends TimedRobot {
     	int autoPositionSelector = m_oi.getAutoKnobPosition();
     	
     	//Getting data from FMS on switch and scale position
-    	String gameData;
-		gameData = DriverStation.getInstance().getGameSpecificMessage();
+		int retries = 100;
+        String gameData = DriverStation.getInstance().getGameSpecificMessage();
+        while (gameData.length() < 2 && retries > 0) {//come up with better way to try to get the game data
+            retries--;
+            try {
+                Thread.sleep(5);
+            } catch (InterruptedException ie) {
+                // Just ignore the interrupted exception
+            }
+            gameData = DriverStation.getInstance().getGameSpecificMessage();
+        }
         if(gameData.length() > 1){
         	boolean switchOnLeft = gameData.charAt(0) == 'L' ? true:false;
         	boolean scaleOnLeft = gameData.charAt(1) == 'L' ? true:false;
