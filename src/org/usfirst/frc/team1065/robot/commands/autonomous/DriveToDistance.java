@@ -17,34 +17,36 @@ public class DriveToDistance extends Command {
     	targetSpeed = speed;
         targetDistance = Math.abs(distance);
         targetAngle = Robot.m_driveTrain.getAngle();
+        endByStopping =true;
         this.setTimeout(time);
     }
     
-    public DriveToDistance(double speed, double distance, double time, boolean stop) {
+    /*public DriveToDistance(double speed, double distance, double time, boolean stop) {
     	requires(Robot.m_driveTrain);
     	targetSpeed = speed;
         targetDistance = Math.abs(distance);
         targetAngle = Robot.m_driveTrain.getAngle();
         endByStopping = stop;
         this.setTimeout(time);
-    }
+    }*/
     
     public DriveToDistance(double speed, double distance, double angle, double time) {
     	requires(Robot.m_driveTrain);
     	targetSpeed = speed;
         targetDistance = Math.abs(distance);
         targetAngle = angle;
+        endByStopping =true;
         this.setTimeout(time);
     }
     
-    public DriveToDistance(double speed, double distance, double angle, double time, boolean stop) {
+    /*public DriveToDistance(double speed, double distance, double angle, double time, boolean stop) {
     	requires(Robot.m_driveTrain);
     	targetSpeed = speed;
         targetDistance = Math.abs(distance);
         targetAngle = angle;
         endByStopping = stop;
         this.setTimeout(time);
-    }
+    }*/
     
     protected void initialize() {
     	Robot.m_driveTrain.resetEncoder();
@@ -95,7 +97,7 @@ public class DriveToDistance extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if(endByStopping){
-    		return atDestinationCounter > 3 || this.isTimedOut();
+    		return atDestinationCounter > 8 || this.isTimedOut();
     	}
     	else{
     		return atDestinationCounter > 0 || this.isTimedOut();

@@ -8,15 +8,22 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ShootForTime extends Command {
-	
+	double m_speed;
     public ShootForTime(double timeout) {
         requires(Robot.m_intake);
         this.setTimeout(timeout);
+        m_speed = .8;
+    }
+    
+    public ShootForTime(double speed, double timeout) {
+        requires(Robot.m_intake);
+        this.setTimeout(timeout);
+        m_speed = speed;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.m_intake.setIntakeOut(.8);
+    	Robot.m_intake.setIntakeOut(m_speed);
     }
 
     // Called repeatedly when this Command is scheduled to run

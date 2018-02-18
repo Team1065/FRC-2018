@@ -23,11 +23,11 @@ public class RobotMap {
     						   ARM_POS_5 = 2000.0;
 	
 	//PID Constants
-    public static final double MECANUM_STRAIGHT_DRIVE_P = 0.05,
+    public static final double MECANUM_STRAIGHT_DRIVE_P = 0.04,
     		                   ARM_F = 0,
 	                		   ARM_P = 0.125,//TODO: tune PID thru web tool first (50% one rotation away)
-            				   ARM_I = 0,
-    						   ARM_D = 0.0001;
+            				   ARM_I = 0.0001,
+    						   ARM_D = 0;
 	//Double Constants
     public static final double JOYSTICK_DEADBAND = 0.05,
 			                   DRIVE_STRAIGHT_BAND_PERCENTAGE = 0.25,

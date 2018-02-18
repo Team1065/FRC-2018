@@ -85,9 +85,9 @@ public class Robot extends TimedRobot {
     	//Getting data from FMS on switch and scale position
     	String gameData;
 		gameData = DriverStation.getInstance().getGameSpecificMessage();
-        if(gameData.length() > 0){
+        if(gameData.length() > 1){
         	boolean switchOnLeft = gameData.charAt(0) == 'L' ? true:false;
-        	boolean scaleOnLeft = gameData.charAt(0) == 'L' ? true:false;
+        	boolean scaleOnLeft = gameData.charAt(1) == 'L' ? true:false;
         	
         	Command[] CommandsArray = {
         			//maybe add priority (switch, scale)
