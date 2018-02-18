@@ -60,7 +60,9 @@ public class RobotMap {
 	//Digital Ports
     public static final int DRIVE_ENCODER_PORT_A = 0,
 	    				    DRIVE_ENCODER_PORT_B = 1,
-	    				    CUBE_SENSOR_PORT = 2;
+	    				    CUBE_SENSOR_PORT = 2,
+				    		ARM_BOTTOM_SWITCH_PORT = 3,
+				    		ARM_TOP_SWITCH_PORT = 4;
     
 	//OI
     public static final int LEFT_JOYSTICK_PORT = 0,					//usb
