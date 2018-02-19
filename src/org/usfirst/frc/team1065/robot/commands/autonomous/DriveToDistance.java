@@ -97,7 +97,7 @@ public class DriveToDistance extends Command {
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
     	if(endByStopping){
-    		return atDestinationCounter > 8 || this.isTimedOut();
+    		return atDestinationCounter > 5 || this.isTimedOut();
     	}
     	else{
     		return atDestinationCounter > 0 || this.isTimedOut();

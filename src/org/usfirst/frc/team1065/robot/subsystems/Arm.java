@@ -29,7 +29,7 @@ public class Arm extends Subsystem {
 		m_slaveTalon = new TalonSRX(RobotMap.SLAVE_TALON_PORT);
 		
 		m_slaveTalon.follow(m_masterTalon);
-		m_slaveTalon.setInverted(false);//TODO: Verify
+		m_slaveTalon.setInverted(true);
 		m_slaveTalon.configNominalOutputForward(0, 0);
 		m_slaveTalon.configNominalOutputReverse(0, 0);
 		m_slaveTalon.configPeakOutputForward(1, 0);
@@ -37,9 +37,9 @@ public class Arm extends Subsystem {
 		
 		//m_masterTalon.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0);
 		m_masterTalon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
-		m_masterTalon.setSensorPhase(false);
-		m_masterTalon.setInverted(false);//TODO:Verify
-		m_masterTalon.configNominalOutputForward(0.1, 0);//TODO: Check
+		m_masterTalon.setSensorPhase(true);
+		m_masterTalon.setInverted(true);
+		m_masterTalon.configNominalOutputForward(0.0, 0);//TODO: Check
 		m_masterTalon.configNominalOutputReverse(-0.0, 0);//TODO: Check
 		m_masterTalon.configPeakOutputForward(1, 0);
 		m_masterTalon.configPeakOutputReverse(-.5, 0);//TODO:Check
@@ -71,7 +71,8 @@ public class Arm extends Subsystem {
     }
     
     public void setPosition(double position) {
-    	if(position > RobotMap.ARM_RETRACTED_LOWER_LIMIT && position < RobotMap.ARM_RETRACTED_HIGHER_LIMIT){
+    	if(m_masterTalon.getSelectedSensorPosition(0) > RobotMap.ARM_RETRACTED_LOWER_LIMIT &&
+    			m_masterTalon.getSelectedSensorPosition(0) < RobotMap.ARM_RETRACTED_HIGHER_LIMIT){
     		retractSolenoid(true);
     	}
     	else{
@@ -85,7 +86,6 @@ public class Arm extends Subsystem {
     	else{
     		m_masterTalon.set(ControlMode.Position,position);
     	}
-    	
     }
 
     public void setVoltage(double speed) {
@@ -114,6 +114,7 @@ public class Arm extends Subsystem {
     	SmartDashboard.putNumber("Arm Talon Speed", m_masterTalon.getSelectedSensorPosition(0));
     	SmartDashboard.putNumber("Arm Setpoint", m_masterTalon.getClosedLoopTarget(0));
     	SmartDashboard.putNumber("Arm Error", m_masterTalon.getClosedLoopError(0));
+    	SmartDashboard.putNumber("Arm Position", m_masterTalon.getSelectedSensorPosition(0));
     	SmartDashboard.putBoolean("Arm on Target", isOnTarget());
     	SmartDashboard.putBoolean("Arm Solenoid Retracted", isSolenoidRetracted());
     }

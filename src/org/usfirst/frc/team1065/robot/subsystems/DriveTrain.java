@@ -89,6 +89,15 @@ public class DriveTrain extends Subsystem {
     	if(Math.abs(error) > 180){
     		error = error>0 ? error-360 : error+360;
     	}
+    	if(Math.abs(error) > 45){
+    		error = error/4;
+    	}
+    	else if(Math.abs(error) > 20){
+    		error = error/2;
+    	}
+    	else if(Math.abs(error) > 10){
+    		error = error/1.5;
+    	}
     	robotDrive.mecanumDrive_Cartesian(0, -velocity, -(error * RobotMap.MECANUM_STRAIGHT_DRIVE_P), 0);
     }
     

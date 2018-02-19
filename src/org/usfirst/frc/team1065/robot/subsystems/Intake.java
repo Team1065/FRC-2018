@@ -18,7 +18,7 @@ public class Intake extends Subsystem {
     
     public Intake(){
     	m_intakeMotor = new Talon(RobotMap.INTAKE_MOTOR_PORT);
-    	m_intakeMotor.setInverted(false);
+    	m_intakeMotor.setInverted(true);
     	m_cubeSwitch = new DigitalInput(RobotMap.CUBE_SENSOR_PORT);
     }
 

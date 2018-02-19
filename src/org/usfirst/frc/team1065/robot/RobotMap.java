@@ -17,13 +17,13 @@ public class RobotMap {
 	//Shooter RPM values
     public static final double ARM_POS_0 = 100.0,//TODO: get postion thru web tool first
 							   ARM_POS_1 = 400.0,
-    						   ARM_POS_2 = 800.0,
-    						   ARM_POS_3 = 1200.0,
-    						   ARM_POS_4 = 1600.0,
-    						   ARM_POS_5 = 2000.0;
+    						   ARM_POS_2 = 600.0,
+    						   ARM_POS_3 = 800.0,
+    						   ARM_POS_4 = 1000.0,
+    						   ARM_POS_5 = 1200.0;
 	
 	//PID Constants
-    public static final double MECANUM_STRAIGHT_DRIVE_P = 0.04,
+    public static final double MECANUM_STRAIGHT_DRIVE_P = 0.023,
     		                   ARM_F = 0,
 	                		   ARM_P = 0.125,//TODO: tune PID thru web tool first (50% one rotation away)
             				   ARM_I = 0.0001,
@@ -39,7 +39,7 @@ public class RobotMap {
 							   ARM_RETRACTED_HIGHER_LIMIT = 2000;
     
     //Int Constants
-    public static final int ARM_ERROR = 100;//4098 is 1 full rotation
+    public static final int ARM_ERROR = 15;//4098 is 1 full rotation
 	
 	//PWM Ports
     public static final int LEFT_FRONT_DRIVE_MOTOR_PORT = 0,

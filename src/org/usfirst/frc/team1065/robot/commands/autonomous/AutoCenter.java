@@ -8,6 +8,12 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoCenter extends CommandGroup {
 
     public AutoCenter(boolean switchOnLeft, boolean scaleOnLeft) {
+    	/*addParallel(new IntakeCubeForTime(15.0));
+    	addSequential(new DriveToDistance(-0.5, 15, 15.0));
+    	addSequential(new RotateToAngle(.4, 55, 15.0));
+    	addSequential(new DriveToDistance(-0.7, 105, 55, 15.0));
+    	addSequential(new RotateToAngle(.4, 0, 15.0));*/
+    	
     	addParallel(new IntakeCubeForTime(15.0));
     	addSequential(new DriveToDistance(0.5, 15, 15.0));
     	if(switchOnLeft){
