@@ -35,8 +35,8 @@ public class RobotMap {
 							   DRIVE_ENCODERS_COUNTS_PER_REV = 20,
 							   ARM_JOYSTICK_MIDDLE = 0.063,
 							   ARM_JOYSTICK_DEADBAND = 0.01,
-							   ARM_RETRACTED_LOWER_LIMIT = 1000,
-							   ARM_RETRACTED_HIGHER_LIMIT = 2000;
+							   ARM_RETRACTED_LOWER_LIMIT = 0,
+							   ARM_RETRACTED_HIGHER_LIMIT = 500;
     
     //Int Constants
     public static final int ARM_ERROR = 15;//4098 is 1 full rotation
@@ -54,7 +54,8 @@ public class RobotMap {
     						SLAVE_TALON_PORT = 2;
     
 	//PCM Ports
-    public static final int DROPDOWN_SOLENOID_PORT = 1,
+    public static final int INTAKE_LED_SOLENOID_PORT = 0,
+    						DROPDOWN_SOLENOID_PORT = 1,
     						ARM_SOLENOID_PORT = 2;
     
 	//Digital Ports

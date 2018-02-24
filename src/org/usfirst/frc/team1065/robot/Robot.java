@@ -25,6 +25,7 @@ import org.usfirst.frc.team1065.robot.subsystems.Arm;
 import org.usfirst.frc.team1065.robot.subsystems.Climber;
 import org.usfirst.frc.team1065.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team1065.robot.subsystems.Intake;
+import org.usfirst.frc.team1065.robot.subsystems.Lights;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -41,6 +42,7 @@ public class Robot extends TimedRobot {
 	public static Arm m_arm;
 	public static Climber m_climber;
 	public static Compressor m_compressor;
+	public static Lights m_lights;
 
 	Command m_autonomousCommand;
 
@@ -52,6 +54,7 @@ public class Robot extends TimedRobot {
 		m_arm = new Arm();
 		m_climber = new Climber();
 		m_compressor = new Compressor();
+		m_lights = new Lights();
 	}
 
 	/**
