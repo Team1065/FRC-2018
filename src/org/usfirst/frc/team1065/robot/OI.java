@@ -89,7 +89,15 @@ public class OI {
     }
     
     public boolean getArmOverride(){
-    	return enhancedDS.getRawButton(RobotMap.ARM_CONTROLL_OVERRIDE);
+    	return enhancedDS.getRawButton(RobotMap.ARM_CONTROL_OVERRIDE);
+    }
+    
+    public boolean getArmExtendedOverride(){
+    	return enhancedDS.getRawButton(RobotMap.ARM_SOLENOID_CONTROL_OVERRIDE);
+    }
+    
+    public boolean getShootingFast(){
+    	return enhancedDS.getRawButton(RobotMap.SHOOTING_SPEED_PORT);
     }
     
     public double getArmDesiredPosition(){

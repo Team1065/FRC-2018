@@ -26,7 +26,8 @@ public class AutoCenter extends CommandGroup {
     	}
     	addParallel(new SetArmToPosition(500,15.0));
     	addSequential(new RotateToAngle(.4, 0, 15.0));
-    	addParallel(new DriveForTime(0.2, 0.2, 0.5));
+    	addSequential(new WaitUntilArmInPosition(3.0));
+    	addParallel(new DriveForTime(0.25, 0.25, 2));
     	addSequential(new ShootForTime(1.5));
     	
     	addSequential(new DriveToDistance(-0.5, 15, 0, 15.0));
@@ -46,7 +47,8 @@ public class AutoCenter extends CommandGroup {
     	}
     	addParallel(new SetArmToPosition(500,15.0));
     	addSequential(new RotateToAngle(.4, 0, 15.0));
-    	addParallel(new DriveForTime(0.2, 0.2, 0.5));
+    	addSequential(new WaitUntilArmInPosition(3.0));
+    	addParallel(new DriveForTime(0.2, 0.2, 2));
     	addSequential(new ShootForTime(1));
     }
 }

@@ -21,8 +21,7 @@ public class ManualArmControl extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	if(Robot.m_oi.getArmOverride()){
-    		//pick a switch to control arm solenoid manual operation.
-    		Robot.m_arm.retractSolenoid(true);
+    		Robot.m_arm.retractSolenoid(Robot.m_oi.getArmExtendedOverride());
     		
     		double ArmStickY = Robot.m_oi.getArmStickY();
         	

@@ -68,12 +68,14 @@ public class RobotMap {
     public static final int LEFT_JOYSTICK_PORT = 0,					//usb
 					  		RIGHT_JOYSTICK_PORT = 1,				//usb
 				  			ENHANCED_DS_PORT = 2,					//usb
+				  			SHOOTING_SPEED_PORT = 1,	    		//Digital
 				  			COMPRESSOR_CONTROL_OVERRIDE = 2,		//Digital
     						INTAKE_IN_PORT = 4,						//Digital
 							INTAKE_OUT_PORT = 5,					//Digital
 							CLIMB_UP_PORT = 6,						//Digital
 						    CLIMB_DOWN_PORT = 8,					//Digital
-							ARM_CONTROLL_OVERRIDE = 9,				//Digital
+							ARM_CONTROL_OVERRIDE = 9,				//Digital
+							ARM_SOLENOID_CONTROL_OVERRIDE = 12,		//Digital
 							SHOOTER_KNOB_PORT = 0,					//Analog
 				    		AUTO_KNOB_PORT = 1,                     //Analog
 				    		ARM_JOYSTICK_Y_PORT = 2;			    //Analog;					

@@ -23,7 +23,8 @@ public class ManualIntakeControl extends Command {
     		Robot.m_intake.setIntakeIn(.8);
     	}
     	else if(Robot.m_oi.getIntakeOutSwitch()){
-    		Robot.m_intake.setIntakeOut(.8);
+    		
+    		Robot.m_intake.setIntakeOut(Robot.m_oi.getShootingFast() ? 0.8 : 0.4);
     	}
     	else{
     		Robot.m_intake.setIntake(0);
