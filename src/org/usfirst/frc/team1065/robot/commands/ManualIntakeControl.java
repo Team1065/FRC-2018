@@ -19,12 +19,18 @@ public class ManualIntakeControl extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(Robot.m_oi.getIntakeInSwitch() && !Robot.m_intake.isCubeDetected()){
-    		Robot.m_intake.setIntakeIn(.8);
+    	if(Robot.m_oi.getRightJoystickTop() && Robot.m_oi.getRightJoystickTrigger()){
+    		double shootingSpeed = 0.6;
+    		if(Robot.m_oi.getShootingFast()){
+    			shootingSpeed = 0.9;
+    		}
+    		else if(Robot.m_oi.getShootingSlow()){
+    			shootingSpeed = 0.3;
+    		}
+    		Robot.m_intake.setIntakeOut(shootingSpeed);
     	}
-    	else if(Robot.m_oi.getIntakeOutSwitch()){
-    		
-    		Robot.m_intake.setIntakeOut(Robot.m_oi.getShootingFast() ? 0.8 : 0.4);
+    	else if(!Robot.m_oi.getIntakeOffSwitch() && !Robot.m_intake.isCubeDetected()){
+    		Robot.m_intake.setIntakeIn(.8);
     	}
     	else{
     		Robot.m_intake.setIntake(0);

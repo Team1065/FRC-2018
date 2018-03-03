@@ -33,7 +33,7 @@ public class Arm extends Subsystem {
 		m_slaveTalon.configNominalOutputForward(0, 0);
 		m_slaveTalon.configNominalOutputReverse(0, 0);
 		m_slaveTalon.configPeakOutputForward(1, 0);
-		m_slaveTalon.configPeakOutputReverse(-.5, 0);
+		m_slaveTalon.configPeakOutputReverse(-1, 0);
 		
 		//m_masterTalon.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, 0);
 		m_masterTalon.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, 0);
@@ -42,7 +42,7 @@ public class Arm extends Subsystem {
 		m_masterTalon.configNominalOutputForward(0.0, 0);//TODO: Check
 		m_masterTalon.configNominalOutputReverse(-0.0, 0);//TODO: Check
 		m_masterTalon.configPeakOutputForward(1, 0);
-		m_masterTalon.configPeakOutputReverse(-.5, 0);//TODO:Check
+		m_masterTalon.configPeakOutputReverse(-1, 0);//TODO:Check
 		m_masterTalon.configAllowableClosedloopError(0, RobotMap.ARM_ERROR, 0);//TODO Check values (4096 is 1 rotation away)
 		m_masterTalon.config_kF(0, RobotMap.ARM_F, 0);
 		m_masterTalon.config_kP(0, RobotMap.ARM_P, 0);
@@ -111,7 +111,7 @@ public class Arm extends Subsystem {
     }
     
     public void updateStatus(){
-    	SmartDashboard.putNumber("Arm Talon Speed", m_masterTalon.getSelectedSensorPosition(0));
+    	SmartDashboard.putNumber("Arm Talon Motor Speed", m_masterTalon.getMotorOutputPercent());
     	SmartDashboard.putNumber("Arm Setpoint", m_masterTalon.getClosedLoopTarget(0));
     	SmartDashboard.putNumber("Arm Error", m_masterTalon.getClosedLoopError(0));
     	SmartDashboard.putNumber("Arm Position", m_masterTalon.getSelectedSensorPosition(0));

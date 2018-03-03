@@ -64,12 +64,8 @@ public class OI {
     	return leftJoystick.getTrigger();
     }
     
-    public boolean getIntakeInSwitch(){
-    	return enhancedDS.getRawButton(RobotMap.INTAKE_IN_PORT);
-    }
-    
-    public boolean getIntakeOutSwitch(){
-    	return enhancedDS.getRawButton(RobotMap.INTAKE_OUT_PORT);
+    public boolean getIntakeOffSwitch(){
+    	return enhancedDS.getRawButton(RobotMap.INTAKE_OFF_PORT);
     }
     
     public boolean getCompressorOverride(){
@@ -97,7 +93,10 @@ public class OI {
     }
     
     public boolean getShootingFast(){
-    	return enhancedDS.getRawButton(RobotMap.SHOOTING_SPEED_PORT);
+    	return enhancedDS.getRawButton(RobotMap.SHOOTING_FAST_PORT);
+    }
+    public boolean getShootingSlow(){
+    	return enhancedDS.getRawButton(RobotMap.SHOOTING_SLOW_PORT);
     }
     
     public double getArmDesiredPosition(){
