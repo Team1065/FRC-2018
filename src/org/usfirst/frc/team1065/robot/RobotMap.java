@@ -16,17 +16,17 @@ package org.usfirst.frc.team1065.robot;
 public class RobotMap {
 	//Shooter RPM values
     public static final double ARM_POS_0 = 0.0,//TODO: get postion thru web tool first
-							   ARM_POS_1 = 300.0,
-    						   ARM_POS_2 = 500.0,
-    						   ARM_POS_3 = 700.0,
-    						   ARM_POS_4 = 900.0,
-    						   ARM_POS_5 = 1100.0;
+							   ARM_POS_1 = 50.0,
+    						   ARM_POS_2 = 700.0,
+    						   ARM_POS_3 = 1200.0,
+    						   ARM_POS_4 = 1550.0,
+    						   ARM_POS_5 = 2200.0;
 	
 	//PID Constants
     public static final double MECANUM_STRAIGHT_DRIVE_P = 0.023,
     		                   ARM_F = 0,
-	                		   ARM_P = 0.4,
-            				   ARM_I = 0.001,
+	                		   ARM_P = 0.8,
+            				   ARM_I = 0.015,
     						   ARM_D = 0;
 	//Double Constants
     public static final double JOYSTICK_DEADBAND = 0.05,
@@ -35,8 +35,8 @@ public class RobotMap {
 							   DRIVE_ENCODERS_COUNTS_PER_REV = 20,
 							   ARM_JOYSTICK_MIDDLE = 0.063,
 							   ARM_JOYSTICK_DEADBAND = 0.01,
-							   ARM_RETRACTED_LOWER_LIMIT = 0,
-							   ARM_RETRACTED_HIGHER_LIMIT = 500;
+							   ARM_RETRACTED_LOWER_LIMIT = 25,
+							   ARM_RETRACTED_HIGHER_LIMIT = 1300;
     
     //Int Constants
     public static final int ARM_ERROR = 15;//4098 is 1 full rotation

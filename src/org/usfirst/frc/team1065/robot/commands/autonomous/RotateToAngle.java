@@ -29,23 +29,23 @@ public class RotateToAngle extends Command {
     	double motorSpeed = speed;
     	//slow down if close to target
     	if(currentAngle > angle-5 && currentAngle < angle+5){
-    		motorSpeed = 0.18;
+    		motorSpeed = 0.2;
     	}
     	else if(currentAngle > angle-10 && currentAngle < angle+10){
     		motorSpeed = 0.2;
     	}
     	else if(currentAngle > angle-15 && currentAngle < angle+15){
-    		motorSpeed = 0.25;
-    	}
-    	else if(currentAngle > angle-20 && currentAngle < angle+20){
     		motorSpeed = 0.3;
     	}
+    	else if(currentAngle > angle-20 && currentAngle < angle+20){
+    		motorSpeed = 0.4;
+    	}
     	else if(currentAngle > angle-30 && currentAngle < angle+30){
-    		motorSpeed = 0.35;
+    		motorSpeed = 0.5;
     	}
     	
-    	if(motorSpeed < .18){
-    		motorSpeed = .18;
+    	if(motorSpeed < .2){
+    		motorSpeed = .2;
     	}
     	
     	//direction of rotation decided based on target angle

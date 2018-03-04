@@ -29,7 +29,7 @@ public class ManualIntakeControl extends Command {
     		}
     		Robot.m_intake.setIntakeOut(shootingSpeed);
     	}
-    	else if(!Robot.m_oi.getIntakeOffSwitch() && !Robot.m_intake.isCubeDetected()){
+    	else if(Robot.m_oi.getIntakeOffSwitch() && !Robot.m_intake.isCubeDetected()){
     		Robot.m_intake.setIntakeIn(.8);
     	}
     	else{

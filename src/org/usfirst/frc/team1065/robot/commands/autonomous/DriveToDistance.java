@@ -58,30 +58,30 @@ public class DriveToDistance extends Command {
     	int direction = (int) (targetSpeed/Math.abs(targetSpeed));
     	//Slow  down near the target
     	if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-5){ //slow down in last 5 inches
-    		motorSpeed = direction * 0.1;
+    		motorSpeed = direction * 0.15;
     	}
     	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-10){ //slow down in last 10 inches
-    		motorSpeed = direction * 0.15;
+    		motorSpeed = direction * 0.18;
     	}
     	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-20){ //slow down in first 5 inches
     		motorSpeed = direction * 0.25;
     	}
     	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) > targetDistance-30 || //slow down in last 30 inches 
     			Math.abs(Robot.m_driveTrain.getEncoderDistance()) < 5){ //slow down in last 20 inches
-    		motorSpeed = direction * 0.35;
+    		motorSpeed = direction * 0.3;
     	}
     	
     	//minimum speed
-    	if(Math.abs(motorSpeed) < .10){
+    	if(Math.abs(motorSpeed) < .15){
     		
-    		motorSpeed = direction * .10;
+    		motorSpeed = direction * .15;
     	}
     	
-    	if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) >= targetDistance+2){
+    	if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) >= targetDistance+4){
     		motorSpeed *= -1;
     		atDestinationCounter = 0;
     	}
-    	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) <= targetDistance-2){
+    	else if(Math.abs(Robot.m_driveTrain.getEncoderDistance()) <= targetDistance-4){
     		atDestinationCounter = 0;
     	}
     	else{
