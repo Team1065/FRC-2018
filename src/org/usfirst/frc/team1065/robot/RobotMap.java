@@ -15,7 +15,7 @@ package org.usfirst.frc.team1065.robot;
  */
 public class RobotMap {
 	//Shooter RPM values
-    public static final double ARM_POS_0 = 0.0,//TODO: get postion thru web tool first
+    public static final double ARM_POS_0 = 0.0,
 							   ARM_POS_1 = 50.0,
     						   ARM_POS_2 = 700.0,
     						   ARM_POS_3 = 1200.0,

@@ -17,38 +17,42 @@ public class AutoCenter extends CommandGroup {
     	addParallel(new IntakeCubeForTime(15.0));
     	addSequential(new DriveToDistance(0.5, 15, 15.0));
     	if(switchOnLeft){
-    		addSequential(new RotateToAngle(.4, -47, 15.0));
-        	addSequential(new DriveToDistance(0.5, 60, -47, 15.0));
+    		addSequential(new RotateToAngle(.4, -50, 15.0));
+        	addSequential(new DriveToDistance(0.5, 60, -50, 15.0));
     	}
     	else{
     		addSequential(new RotateToAngle(.4, 47, 15.0));
         	addSequential(new DriveToDistance(0.5, 55, 47, 15.0));
     	}
-    	addParallel(new SetArmToPosition(500,15.0));
-    	addSequential(new RotateToAngle(.4, 0, 15.0));
-    	addSequential(new WaitUntilArmInPosition(3.0));
-    	addParallel(new DriveForTime(0.25, 0.25, 2));
-    	addSequential(new ShootForTime(1.5));
+    	addParallel(new SetArmToPosition(700,15.0));
+    	addSequential(new RotateToAngle(.5, 0, 15.0));
+    	addSequential(new WaitUntilArmInPosition(2.0));
+    	addSequential(new DriveToDistance(0.5, 10, 0, 15.0));
+    	addSequential(new ShootForTime(1.0));//shoot
     	
-    	addSequential(new DriveToDistance(-0.5, 15, 0, 15.0));
-    	addParallel(new SetArmToPosition(100,15.0));
+    	addSequential(new DriveToDistance(-0.5, 10, 0, 15.0));
+    	addParallel(new SetArmToPosition(0,15.0));
     	addParallel(new IntakeCubeForTime(15.0));
     	if(switchOnLeft){
-	    	addSequential(new RotateToAngle(.4, 90, 15.0));
-	    	addSequential(new DriveToDistance(0.4, 30, 90, 15.0));
+	    	addSequential(new RotateToAngle(.5, 90, 15.0));
+	    	addSequential(new WaitUntilArmInPosition(2.0));
+	    	addSequential(new DriveToDistance(0.5, 30, 90, 15.0));//pickup
 	    	addSequential(new DriveForTime(0, 0, 0.5));
-	    	addSequential(new DriveToDistance(-0.4, 25, 90, 15.0));
+	    	addSequential(new DriveToDistance(-0.5, 30, 90, 15.0));
     	}
     	else{
-    		addSequential(new RotateToAngle(.4, -90, 15.0));
-	    	addSequential(new DriveToDistance(0.4, 30, -90, 15.0));
+    		addSequential(new RotateToAngle(.5, -90, 15.0));
+    		addSequential(new WaitUntilArmInPosition(2.0));
+	    	addSequential(new DriveToDistance(0.5, 30, -90, 15.0));//pickup
 	    	addSequential(new DriveForTime(0, 0, 0.5));
-	    	addSequential(new DriveToDistance(-0.4, 25, -90, 15.0));
+	    	addSequential(new DriveToDistance(-0.5, 25, -90, 15.0));
     	}
-    	addParallel(new SetArmToPosition(500,15.0));
-    	addSequential(new RotateToAngle(.4, 0, 15.0));
-    	addSequential(new WaitUntilArmInPosition(3.0));
-    	addParallel(new DriveForTime(0.2, 0.2, 2));
-    	addSequential(new ShootForTime(1));
+    	addParallel(new SetArmToPosition(700,15.0));
+    	addSequential(new RotateToAngle(.5, 0, 15.0));
+    	addSequential(new WaitUntilArmInPosition(2.0));
+    	addSequential(new DriveToDistance(0.5, 10, 0, 15.0));
+    	addSequential(new ShootForTime(1));//shoot
+    	addSequential(new DriveToDistance(-0.5, 20, 0, 15.0));
+    	addSequential(new SetArmToPosition(0,15.0));
     }
 }
