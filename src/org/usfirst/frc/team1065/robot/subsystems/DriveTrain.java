@@ -114,6 +114,7 @@ public class DriveTrain extends Subsystem {
     	}
     	double curAngle = getAngle();
     	double error = curAngle - setAngle;
+    	//TODO: this might not be needed anymore
     	if(Math.abs(error) > 180){
     		error = error>0 ? error-360 : error+360;
     	}

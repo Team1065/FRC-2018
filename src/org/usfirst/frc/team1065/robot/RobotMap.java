@@ -15,17 +15,17 @@ package org.usfirst.frc.team1065.robot;
  */
 public class RobotMap {
 	//Shooter RPM values
-    public static final double ARM_POS_0 = 0.0,
-							   ARM_POS_1 = 50.0,
-    						   ARM_POS_2 = 700.0,
-    						   ARM_POS_3 = 1200.0,
-    						   ARM_POS_4 = 1550.0,
-    						   ARM_POS_5 = 2200.0;
+    public static final double ARM_POS_0 = 0.0,//home?
+							   ARM_POS_1 = 50.0,//pickup
+    						   ARM_POS_2 = 700.0,//switch
+    						   ARM_POS_3 = 1250.0,//low scale
+    						   ARM_POS_4 = 1550.0,//medium scale
+    						   ARM_POS_5 = 2200.0;//Dunk
 	
 	//PID Constants
     public static final double MECANUM_STRAIGHT_DRIVE_P = 0.023,
     		                   ARM_F = 0,
-	                		   ARM_P = 0.8,
+	                		   ARM_P = 0.9,
             				   ARM_I = 0.015,
     						   ARM_D = 0;
 	//Double Constants
@@ -63,7 +63,9 @@ public class RobotMap {
 	    				    DRIVE_ENCODER_PORT_B = 1,
 	    				    CUBE_SENSOR_PORT = 2,
 				    		ARM_BOTTOM_SWITCH_PORT = 3,
-				    		ARM_TOP_SWITCH_PORT = 4;
+				    		ARM_TOP_SWITCH_PORT = 4,
+				    		AUTO_DISABLE_ALLEY_SWITCH_PORT = 5,
+				    		AUTO_SCALE_PRIORITY_SWITCH_PORT = 6;
     
 	//OI
     public static final int LEFT_JOYSTICK_PORT = 0,					//usb

@@ -95,6 +95,7 @@ public class OI {
     public boolean getShootingFast(){
     	return enhancedDS.getRawButton(RobotMap.SHOOTING_FAST_PORT);
     }
+    
     public boolean getShootingSlow(){
     	return enhancedDS.getRawButton(RobotMap.SHOOTING_SLOW_PORT);
     }

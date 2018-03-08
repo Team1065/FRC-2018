@@ -14,7 +14,7 @@ public class RotateToAngle extends Command {
     public RotateToAngle(double speed, double angle, double time) {
         requires(Robot.m_driveTrain);
         this.speed = Math.abs(speed);//0,1
-        this.angle = angle;//-180,180
+        this.angle = angle;
         this.setTimeout(time);
         onAngleCounter = 0;
     }

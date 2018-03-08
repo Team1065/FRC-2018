@@ -7,7 +7,10 @@
 
 package org.usfirst.frc.team1065.robot;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -43,8 +46,12 @@ public class Robot extends TimedRobot {
 	public static Climber m_climber;
 	public static Compressor m_compressor;
 	public static Lights m_lights;
+	
+	public static DigitalInput m_autoDisableAlleySwitch;
+	public static DigitalInput m_autoScalePrioritySwitch;
 
 	Command m_autonomousCommand;
+	UsbCamera m_camera0;
 
 	@Override
 	public void robotInit() {
@@ -55,6 +62,15 @@ public class Robot extends TimedRobot {
 		m_climber = new Climber();
 		m_compressor = new Compressor();
 		m_lights = new Lights();
+		
+		m_autoDisableAlleySwitch = new DigitalInput(RobotMap.AUTO_DISABLE_ALLEY_SWITCH_PORT);
+		m_autoScalePrioritySwitch = new DigitalInput(RobotMap.AUTO_SCALE_PRIORITY_SWITCH_PORT);
+		
+		m_camera0 = CameraServer.getInstance().startAutomaticCapture(0);
+		m_camera0.setFPS(15);
+		m_camera0.setResolution(320, 240);
+		m_camera0.setExposureManual(40);
+		m_camera0.setExposureHoldCurrent();
 	}
 
 	/**
