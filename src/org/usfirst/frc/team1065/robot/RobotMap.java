@@ -16,7 +16,7 @@ package org.usfirst.frc.team1065.robot;
 public class RobotMap {
 	//Shooter RPM values
     public static final double ARM_POS_0 = 0.0,//home?
-							   ARM_POS_1 = 50.0,//pickup
+							   ARM_POS_1 = 0.0,//pickup
     						   ARM_POS_2 = 700.0,//switch
     						   ARM_POS_3 = 1250.0,//low scale
     						   ARM_POS_4 = 1550.0,//medium scale
@@ -25,7 +25,7 @@ public class RobotMap {
 	//PID Constants
     public static final double MECANUM_STRAIGHT_DRIVE_P = 0.023,
     		                   ARM_F = 0,
-	                		   ARM_P = 0.9,
+	                		   ARM_P = 0.8,
             				   ARM_I = 0.015,
     						   ARM_D = 0;
 	//Double Constants
@@ -35,11 +35,11 @@ public class RobotMap {
 							   DRIVE_ENCODERS_COUNTS_PER_REV = 20,
 							   ARM_JOYSTICK_MIDDLE = 0.063,
 							   ARM_JOYSTICK_DEADBAND = 0.01,
-							   ARM_RETRACTED_LOWER_LIMIT = 25,
+							   ARM_RETRACTED_LOWER_LIMIT = -100,
 							   ARM_RETRACTED_HIGHER_LIMIT = 1300;
     
     //Int Constants
-    public static final int ARM_ERROR = 15;//4098 is 1 full rotation
+    public static final int ARM_ERROR = 20;//4098 is 1 full rotation
 	
 	//PWM Ports
     public static final int LEFT_FRONT_DRIVE_MOTOR_PORT = 0,
