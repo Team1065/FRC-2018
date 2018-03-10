@@ -41,7 +41,7 @@ public class AutoLeftSide extends CommandGroup {
     		//switch on right
     		else{
     			addParallel(new SetArmToPosition(2200,15.0));
-    			addSequential(new DriveToDistance(-0.4, 40, -12.5, 15.0));
+    			addSequential(new DriveToDistance(-0.4, 40, -10, 15.0));
     			addSequential(new WaitUntilArmInPosition(2.0));
         		addSequential(new ShootForTime(1.5));//Shoot Scale
         		addSequential(new SetArmToPosition(0,15.0));
@@ -64,7 +64,7 @@ public class AutoLeftSide extends CommandGroup {
     		addParallel(new IntakeCubeForTime(15.0));
     		addSequential(new WaitUntilArmInPosition(2.0));
     		addSequential(new DriveToDistance(0.4, 40, 10, 15.0));//Pickup
-    		addSequential(new DriveForTime(0, 0, .2));
+    		addSequential(new DriveForTime(0, 0, .1));
     		//switch on Right and not forcing double scales
     		if(!switchOnLeft && !Robot.m_autoScalePrioritySwitch.get()){
     			addParallel(new SetArmToPosition(700,15.0));

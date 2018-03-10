@@ -10,13 +10,14 @@ import edu.wpi.first.wpilibj.command.Command;
 public class DriveToDistance extends Command {
 	double targetSpeed, targetDistance, targetAngle;
 	int atDestinationCounter;
-	boolean endByStopping;
+	boolean endByStopping, useCurrentAngle;
 	//set speed negative to go backwards
     public DriveToDistance(double speed, double distance, double time) {
     	requires(Robot.m_driveTrain);
     	targetSpeed = speed;
         targetDistance = Math.abs(distance);
         targetAngle = Robot.m_driveTrain.getAngle();
+        useCurrentAngle = true;
         endByStopping =true;
         this.setTimeout(time);
     }
@@ -36,6 +37,7 @@ public class DriveToDistance extends Command {
         targetDistance = Math.abs(distance);
         targetAngle = angle;
         endByStopping =true;
+        useCurrentAngle = false;
         this.setTimeout(time);
     }
     
@@ -50,6 +52,9 @@ public class DriveToDistance extends Command {
     
     protected void initialize() {
     	Robot.m_driveTrain.resetEncoder();
+    	if(useCurrentAngle){
+    		targetAngle = Robot.m_driveTrain.getAngle();
+    	}
     }
 
     // Called repeatedly when this Command is scheduled to run

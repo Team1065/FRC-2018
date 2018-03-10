@@ -54,9 +54,10 @@ public class RobotMap {
     						SLAVE_TALON_PORT = 2;
     
 	//PCM Ports
-    public static final int INTAKE_LED_SOLENOID_PORT = 0,
-    						DROPDOWN_SOLENOID_PORT = 1,
-    						ARM_SOLENOID_PORT = 2;
+    public static final int DROPDOWN_SOLENOID_PORT = 1,
+    						ARM_SOLENOID_PORT = 2,
+							INTAKE_LED_SOLENOID_PORT = 3,
+							INTAKE_LED2_SOLENOID_PORT = 4;
     
 	//Digital Ports
     public static final int DRIVE_ENCODER_PORT_A = 0,

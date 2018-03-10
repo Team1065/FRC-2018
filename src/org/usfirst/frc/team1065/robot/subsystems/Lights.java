@@ -10,9 +10,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class Lights extends Subsystem {
-	private Solenoid m_intakeLED;
+	private Solenoid m_intakeLED, m_intakeLED2;
     public Lights(){
     	m_intakeLED = new Solenoid(RobotMap.INTAKE_LED_SOLENOID_PORT);
+    	m_intakeLED2 = new Solenoid(RobotMap.INTAKE_LED2_SOLENOID_PORT);
     }
 
     public void initDefaultCommand() {
@@ -21,6 +22,7 @@ public class Lights extends Subsystem {
     
     public void setIntakeLED(boolean on){
     	m_intakeLED.set(on);
+    	m_intakeLED2.set(on);
     }
 }
 

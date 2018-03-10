@@ -12,10 +12,9 @@ public class AutoRightSide extends CommandGroup {
     public AutoRightSide(boolean switchOnLeft, boolean scaleOnLeft) {
     	//Scale on Right
     	if(!scaleOnLeft){
-    		addParallel(new SetArmToPosition(0,15.0));
-    		addParallel(new IntakeCubeForTime(15.0));
-    		addSequential(new DriveToDistance(-.85, 150, 15.0));
     		addParallel(new SetArmToPosition(2200,15.0));
+    		addParallel(new IntakeCubeForTime(15.0));
+    		addSequential(new DriveToDistance(-.9, 150, 15.0));
     		addSequential(new RotateToAngle(.5, -18, 15.0));
     		addSequential(new DriveToDistance(-0.5, 40, -18, 15.0));
     		addSequential(new WaitUntilArmInPosition(2.5));
@@ -24,8 +23,8 @@ public class AutoRightSide extends CommandGroup {
     		addSequential(new RotateToAngle(.5, 12.5, 15.0));
     		addParallel(new IntakeCubeForTime(12.5));
     		addSequential(new WaitUntilArmInPosition(2.0));
-    		addSequential(new DriveToDistance(0.5, 55, 12.5, 15.0));//pickup
-    		addSequential(new DriveForTime(0, 0, .2));
+    		addSequential(new DriveToDistance(0.65, 65, 12.5, 15.0));//pickup
+    		addSequential(new DriveForTime(0, 0, .1));
     		//addSequential(new DriveToDistance(-0.5, 10, 12.5, 15.0));//pickup
     		
     		//switch on right and not forcing double scale
@@ -41,7 +40,7 @@ public class AutoRightSide extends CommandGroup {
     		//switch on left
     		else{
     			addParallel(new SetArmToPosition(2200,15.0));
-    			addSequential(new DriveToDistance(-0.4, 40, 12.5, 15.0));
+    			addSequential(new DriveToDistance(-0.4, 44, 10, 15.0));
     			addSequential(new WaitUntilArmInPosition(3.5));
         		addSequential(new ShootForTime(1.5));//Shoot Scale
         		addSequential(new SetArmToPosition(0,15.0));
@@ -52,20 +51,20 @@ public class AutoRightSide extends CommandGroup {
     	else if (Robot.m_autoDisableAlleySwitch.get()){
     		addParallel(new SetArmToPosition(0,15.0));
     		addParallel(new IntakeCubeForTime(15.0));
-    		addSequential(new DriveToDistance(-0.85, 168, 15.0));
+    		addSequential(new DriveToDistance(-0.9, 160, 15.0));
     		addSequential(new RotateToAngle(.5, -90, 15.0));
     		addSequential(new DriveToDistance(-0.8, 135, -90, 15.0));
     		addParallel(new SetArmToPosition(2200,15.0));
     		addSequential(new RotateToAngle(.5, 0, 15.0));
     		addSequential(new DriveToDistance(-0.4, 27, 0, 15.0));
-    		addSequential(new WaitUntilArmInPosition(2.0));
+    		addSequential(new WaitUntilArmInPosition(3));
     		addSequential(new ShootForTime(1.0));//Shoot Scale
     		addParallel(new SetArmToPosition(0,15.0));
     		addSequential(new RotateToAngle(.4, -10, 15.0));
     		addParallel(new IntakeCubeForTime(15.0));
     		addSequential(new WaitUntilArmInPosition(2.0));
-    		addSequential(new DriveToDistance(0.4, 40, -10, 15.0));//Pickup
-    		addSequential(new DriveForTime(0, 0, .2));
+    		addSequential(new DriveToDistance(0.65, 45, -10, 15.0));//Pickup
+    		addSequential(new DriveForTime(0, 0, .1));
     		//switch on left and not forcing double scale
     		if(switchOnLeft && Robot.m_autoScalePrioritySwitch.get()){
     			addParallel(new SetArmToPosition(700,15.0));
