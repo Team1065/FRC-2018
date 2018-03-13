@@ -23,7 +23,7 @@ public class AutoRightSide extends CommandGroup {
     		addSequential(new RotateToAngle(.5, 12.5, 15.0));
     		addParallel(new IntakeCubeForTime(12.5));
     		addSequential(new WaitUntilArmInPosition(2.0));
-    		addSequential(new DriveToDistance(0.65, 65, 12.5, 15.0));//pickup
+    		addSequential(new DriveToDistance(0.65, 70, 12.5, 15.0));//pickup
     		addSequential(new DriveForTime(0, 0, .1));
     		//addSequential(new DriveToDistance(-0.5, 10, 12.5, 15.0));//pickup
     		
@@ -63,7 +63,7 @@ public class AutoRightSide extends CommandGroup {
     		addSequential(new RotateToAngle(.4, -10, 15.0));
     		addParallel(new IntakeCubeForTime(15.0));
     		addSequential(new WaitUntilArmInPosition(2.0));
-    		addSequential(new DriveToDistance(0.65, 45, -10, 15.0));//Pickup
+    		addSequential(new DriveToDistance(0.65, 50, -10, 15.0));//Pickup
     		addSequential(new DriveForTime(0, 0, .1));
     		//switch on left and not forcing double scale
     		if(switchOnLeft && Robot.m_autoScalePrioritySwitch.get()){
