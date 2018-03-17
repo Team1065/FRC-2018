@@ -36,7 +36,7 @@ public class RobotMap {
 							   ARM_JOYSTICK_MIDDLE = 0.063,
 							   ARM_JOYSTICK_DEADBAND = 0.01,
 							   ARM_RETRACTED_LOWER_LIMIT = -100,
-							   ARM_RETRACTED_HIGHER_LIMIT = 1300;
+							   ARM_RETRACTED_HIGHER_LIMIT = 2000;
     
     //Int Constants
     public static final int ARM_ERROR = 20;//4098 is 1 full rotation
