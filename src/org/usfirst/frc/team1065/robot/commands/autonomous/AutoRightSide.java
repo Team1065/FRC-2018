@@ -21,11 +21,10 @@ public class AutoRightSide extends CommandGroup {
     		addSequential(new ShootForTime(1.0));//Shoot Scale
     		addParallel(new SetArmToPosition(0,15.0));
     		addSequential(new RotateToAngle(.5, 12.5, 15.0));
-    		addParallel(new IntakeCubeForTime(12.5));
+    		addParallel(new IntakeCubeForTime(15.0));
     		addSequential(new WaitUntilArmInPosition(2.0));
     		addSequential(new DriveToDistance(0.65, 70, 12.5, 15.0));//pickup
     		addSequential(new DriveForTime(0, 0, .1));
-    		//addSequential(new DriveToDistance(-0.5, 10, 12.5, 15.0));//pickup
     		
     		//switch on right and not forcing double scale
     		if(!switchOnLeft && Robot.m_autoScalePrioritySwitch.get()){
@@ -40,7 +39,7 @@ public class AutoRightSide extends CommandGroup {
     		//switch on left
     		else{
     			addParallel(new SetArmToPosition(2200,15.0));
-    			addSequential(new DriveToDistance(-0.4, 44, 10, 15.0));
+    			addSequential(new DriveToDistance(-0.4, 44, 9, 15.0));
     			addSequential(new WaitUntilArmInPosition(3.5));
         		addSequential(new ShootForTime(1.5));//Shoot Scale
         		addSequential(new SetArmToPosition(0,15.0));
@@ -78,7 +77,7 @@ public class AutoRightSide extends CommandGroup {
     		//switch on right
     		else{
     			addParallel(new SetArmToPosition(2200,15.0));
-    			addSequential(new DriveToDistance(-0.45, 35, -10, 15.0));
+    			addSequential(new DriveToDistance(-0.45, 38, -7, 15.0));
     			addSequential(new WaitUntilArmInPosition(2.0));
         		addSequential(new ShootForTime(1.0));//Shoot Scale
         		addSequential(new SetArmToPosition(0,15.0));
@@ -89,15 +88,15 @@ public class AutoRightSide extends CommandGroup {
     	{
     		addParallel(new SetArmToPosition(0,15.0));
     		addParallel(new IntakeCubeForTime(15.0));
-    		addSequential(new DriveToDistance(-0.5, 130, 15.0));
+    		addSequential(new DriveToDistance(-0.5, 110, 15.0));
     		//get the switch if it is on the right
     		if(!switchOnLeft){
         		addParallel(new SetArmToPosition(700,15.0));
         		addSequential(new RotateToAngle(.5, 90, 15.0));
         		addSequential(new WaitUntilArmInPosition(4.0));
-        		addSequential(new DriveToDistance(0.5, 30, 3.0));
+        		addSequential(new DriveToDistance(0.5, 30, 90, 3.0));
         		addSequential(new ShootForTime(2.0));//Shoot
-        		addSequential(new DriveToDistance(-0.5, 30, 3.0));
+        		addSequential(new DriveToDistance(-0.5, 30, 90, 3.0));
         		addSequential(new RotateToAngle(.5, 0, 15.0));
         		addSequential(new SetArmToPosition(0,15.0));
     		}
