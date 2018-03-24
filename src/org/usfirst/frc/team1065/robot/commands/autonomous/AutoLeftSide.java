@@ -10,9 +10,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutoLeftSide extends CommandGroup {
 
     public AutoLeftSide(boolean switchOnLeft, boolean scaleOnLeft) {
-    	//Scale on Left
-    	if(scaleOnLeft){
-    		addParallel(new SetArmToPosition(2200,15.0));
+    	//Scale on Left and Alley Run not Disabled
+    	if(scaleOnLeft && Robot.m_autoDisableAlleySwitch.get()){
+    		addParallel(new SetArmToPosition(2000,15.0));
     		addParallel(new IntakeCubeForTime(15.0));
     		addSequential(new DriveToDistance(-.9, 150, 15.0));
     		addSequential(new RotateToAngle(.5, 18, 15.0));
@@ -38,7 +38,7 @@ public class AutoLeftSide extends CommandGroup {
     		}
     		//switch on right
     		else{
-    			addParallel(new SetArmToPosition(2200,15.0));
+    			addParallel(new SetArmToPosition(2000,15.0));
     			addSequential(new DriveToDistance(-0.4, 44, -9, 15.0));
     			addSequential(new WaitUntilArmInPosition(3.5));
         		addSequential(new ShootForTime(1.5));//Shoot Scale
@@ -46,46 +46,20 @@ public class AutoLeftSide extends CommandGroup {
     		}
     		
     	}
-    	//Scale on right and alley runs not disabled
-    	else if (Robot.m_autoDisableAlleySwitch.get()){
+    	//Scale on Left and Alley Run Disabled so we want to score in scale but not get in the way of our partners
+    	else if (scaleOnLeft){
     		addParallel(new SetArmToPosition(0,15.0));
     		addParallel(new IntakeCubeForTime(15.0));
-    		addSequential(new DriveToDistance(-0.9, 160, 15.0));
+    		addSequential(new DriveToDistance(-.9, 200, 15.0));
     		addSequential(new RotateToAngle(.5, 90, 15.0));
-    		addSequential(new DriveToDistance(-0.8, 135, 90, 15.0));
-    		addParallel(new SetArmToPosition(2200,15.0));
-    		addSequential(new RotateToAngle(.5, 0, 15.0));
-    		addSequential(new DriveToDistance(-0.4, 27, 0, 15.0));
-    		addSequential(new WaitUntilArmInPosition(3));
+    		addSequential(new DriveToDistance(0.5, 30, 90, 15.0));
+    		addParallel(new SetArmToPosition(2000,15.0));
+    		addSequential(new WaitUntilArmInPosition(2.5));
     		addSequential(new ShootForTime(1.0));//Shoot Scale
-    		addParallel(new SetArmToPosition(0,15.0));
-    		addSequential(new RotateToAngle(.4, 10, 15.0));
-    		addParallel(new IntakeCubeForTime(15.0));
-    		addSequential(new WaitUntilArmInPosition(2.0));
-    		addSequential(new DriveToDistance(0.65, 50, 10, 15.0));//Pickup
-    		addSequential(new DriveForTime(0, 0, .1));
-    		//switch on right and not forcing double scale
-    		if(!switchOnLeft && Robot.m_autoScalePrioritySwitch.get()){
-    			addParallel(new SetArmToPosition(700,15.0));
-    			addSequential(new DriveForTime(0, 0, 0.1));
-        		addSequential(new WaitUntilArmInPosition(2.0));
-        		addSequential(new DriveToDistance(0.5, 10, 10, 15.0));
-        		addSequential(new ShootForTime(1.0));//Shoot Switch
-        		addSequential(new DriveToDistance(0.5, 15, 10, 15.0));
-        		addSequential(new SetArmToPosition(0,15.0));
-    		}
-    		//switch on left
-    		else{
-    			addParallel(new SetArmToPosition(2200,15.0));
-    			addSequential(new DriveToDistance(-0.45, 38, 7, 15.0));
-    			addSequential(new WaitUntilArmInPosition(2.0));
-        		addSequential(new ShootForTime(1.0));//Shoot Scale
-        		addSequential(new SetArmToPosition(0,15.0));
-    		}
+    		addSequential(new SetArmToPosition(0,15.0));
     	}
-    	//Scale on right and alley runs disabled
-    	else
-    	{
+    	//Scale on right
+    	else if (Robot.m_autoDisableAlleySwitch.get()){
     		addParallel(new SetArmToPosition(0,15.0));
     		addParallel(new IntakeCubeForTime(15.0));
     		addSequential(new DriveToDistance(-0.5, 110, 15.0));
