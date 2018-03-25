@@ -12,7 +12,7 @@ public class AutoRightSide extends CommandGroup {
     public AutoRightSide(boolean switchOnLeft, boolean scaleOnLeft) {
     	//Scale on Right
     	if(!scaleOnLeft){
-    		addParallel(new SetArmToPosition(2000,15.0));
+    		addParallel(new SetArmToPosition(1750,15.0));
     		addParallel(new IntakeCubeForTime(15.0));
     		addSequential(new DriveToDistance(-.9, 150, 15.0));
     		addSequential(new RotateToAngle(.5, -18, 15.0));
@@ -38,7 +38,7 @@ public class AutoRightSide extends CommandGroup {
     		}
     		//switch on left
     		else{
-    			addParallel(new SetArmToPosition(2000,15.0));
+    			addParallel(new SetArmToPosition(1750,15.0));
     			addSequential(new DriveToDistance(-0.4, 44, 9, 15.0));
     			addSequential(new WaitUntilArmInPosition(3.5));
         		addSequential(new ShootForTime(1.5));//Shoot Scale
@@ -53,7 +53,7 @@ public class AutoRightSide extends CommandGroup {
     		addSequential(new DriveToDistance(-0.9, 160, 15.0));
     		addSequential(new RotateToAngle(.5, -90, 15.0));
     		addSequential(new DriveToDistance(-0.8, 135, -90, 15.0));
-    		addParallel(new SetArmToPosition(2000,15.0));
+    		addParallel(new SetArmToPosition(1750,15.0));
     		addSequential(new RotateToAngle(.5, 0, 15.0));
     		addSequential(new DriveToDistance(-0.4, 27, 0, 15.0));
     		addSequential(new WaitUntilArmInPosition(3));
@@ -76,7 +76,7 @@ public class AutoRightSide extends CommandGroup {
     		}
     		//switch on right
     		else{
-    			addParallel(new SetArmToPosition(2000,15.0));
+    			addParallel(new SetArmToPosition(1750,15.0));
     			addSequential(new DriveToDistance(-0.45, 38, -7, 15.0));
     			addSequential(new WaitUntilArmInPosition(2.0));
         		addSequential(new ShootForTime(1.0));//Shoot Scale
@@ -88,7 +88,7 @@ public class AutoRightSide extends CommandGroup {
     	{
     		addParallel(new SetArmToPosition(0,15.0));
     		addParallel(new IntakeCubeForTime(15.0));
-    		addSequential(new DriveToDistance(-0.5, 110, 15.0));
+    		addSequential(new DriveToDistance(-0.5, 105, 15.0));
     		//get the switch if it is on the right
     		if(!switchOnLeft){
         		addParallel(new SetArmToPosition(700,15.0));

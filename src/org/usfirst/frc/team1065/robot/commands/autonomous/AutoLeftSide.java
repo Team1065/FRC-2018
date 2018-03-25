@@ -12,7 +12,7 @@ public class AutoLeftSide extends CommandGroup {
     public AutoLeftSide(boolean switchOnLeft, boolean scaleOnLeft) {
     	//Scale on Left and Alley Run not Disabled
     	if(scaleOnLeft && Robot.m_autoDisableAlleySwitch.get()){
-    		addParallel(new SetArmToPosition(2000,15.0));
+    		addParallel(new SetArmToPosition(1750,15.0));
     		addParallel(new IntakeCubeForTime(15.0));
     		addSequential(new DriveToDistance(-.9, 150, 15.0));
     		addSequential(new RotateToAngle(.5, 18, 15.0));
@@ -38,7 +38,7 @@ public class AutoLeftSide extends CommandGroup {
     		}
     		//switch on right
     		else{
-    			addParallel(new SetArmToPosition(2000,15.0));
+    			addParallel(new SetArmToPosition(1750,15.0));
     			addSequential(new DriveToDistance(-0.4, 44, -9, 15.0));
     			addSequential(new WaitUntilArmInPosition(3.5));
         		addSequential(new ShootForTime(1.5));//Shoot Scale
@@ -53,7 +53,7 @@ public class AutoLeftSide extends CommandGroup {
     		addSequential(new DriveToDistance(-.9, 200, 15.0));
     		addSequential(new RotateToAngle(.5, 90, 15.0));
     		addSequential(new DriveToDistance(0.5, 30, 90, 15.0));
-    		addParallel(new SetArmToPosition(2000,15.0));
+    		addParallel(new SetArmToPosition(1750,15.0));
     		addSequential(new WaitUntilArmInPosition(2.5));
     		addSequential(new ShootForTime(1.0));//Shoot Scale
     		addSequential(new SetArmToPosition(0,15.0));
@@ -62,7 +62,7 @@ public class AutoLeftSide extends CommandGroup {
     	else if (Robot.m_autoDisableAlleySwitch.get()){
     		addParallel(new SetArmToPosition(0,15.0));
     		addParallel(new IntakeCubeForTime(15.0));
-    		addSequential(new DriveToDistance(-0.5, 110, 15.0));
+    		addSequential(new DriveToDistance(-0.5, 105, 15.0));
     		//get the switch if it is on the left
     		if(switchOnLeft){
         		addParallel(new SetArmToPosition(700,15.0));
