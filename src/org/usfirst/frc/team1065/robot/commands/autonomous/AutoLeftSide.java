@@ -18,7 +18,7 @@ public class AutoLeftSide extends CommandGroup {
     		addSequential(new RotateToAngle(.5, 18, 15.0));
     		addSequential(new DriveToDistance(-0.5, 40, 18, 15.0));
     		addSequential(new WaitUntilArmInPosition(2.5));
-    		addSequential(new ShootForTime(1.0));//Shoot Scale
+    		addSequential(new ShootForTime(0.9,1.0));//Shoot Scale
     		addParallel(new SetArmToPosition(0,15.0));
     		addSequential(new RotateToAngle(.5, -12.5, 15.0));
     		addParallel(new IntakeCubeForTime(15.0));
@@ -41,7 +41,7 @@ public class AutoLeftSide extends CommandGroup {
     			addParallel(new SetArmToPosition(1750,15.0));
     			addSequential(new DriveToDistance(-0.4, 44, -9, 15.0));
     			addSequential(new WaitUntilArmInPosition(3.5));
-        		addSequential(new ShootForTime(1.5));//Shoot Scale
+        		addSequential(new ShootForTime(0.9,1.5));//Shoot Scale
         		addSequential(new SetArmToPosition(0,15.0));
     		}
     		
@@ -55,7 +55,7 @@ public class AutoLeftSide extends CommandGroup {
     		addSequential(new DriveToDistance(0.5, 30, 90, 15.0));
     		addParallel(new SetArmToPosition(1750,15.0));
     		addSequential(new WaitUntilArmInPosition(2.5));
-    		addSequential(new ShootForTime(1.0));//Shoot Scale
+    		addSequential(new ShootForTime(0.9,1.0));//Shoot Scale
     		addSequential(new SetArmToPosition(0,15.0));
     	}
     	//Scale on right
