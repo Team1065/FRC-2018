@@ -12,13 +12,14 @@ public class AutoLeftSide extends CommandGroup {
     public AutoLeftSide(boolean switchOnLeft, boolean scaleOnLeft) {
     	//Scale on Left and Alley Run not Disabled
     	if(scaleOnLeft && Robot.m_autoDisableAlleySwitch.get()){
-    		addParallel(new SetArmToPosition(1750,15.0));
+    		addParallel(new SetArmToPosition(2150,15.0));
     		addParallel(new IntakeCubeForTime(15.0));
     		addSequential(new DriveToDistance(-.9, 150, 15.0));
+    		addParallel(new SetArmToPosition(2150,15.0));
     		addSequential(new RotateToAngle(.5, 18, 15.0));
     		addSequential(new DriveToDistance(-0.5, 40, 18, 15.0));
     		addSequential(new WaitUntilArmInPosition(2.5));
-    		addSequential(new ShootForTime(0.9,1.0));//Shoot Scale
+    		addSequential(new ShootForTime(1.0));//Shoot Scale
     		addParallel(new SetArmToPosition(0,15.0));
     		addSequential(new RotateToAngle(.5, -12.5, 15.0));
     		addParallel(new IntakeCubeForTime(15.0));
@@ -28,20 +29,21 @@ public class AutoLeftSide extends CommandGroup {
     		
     		//switch on left and not forcing double scale
     		if(switchOnLeft && Robot.m_autoScalePrioritySwitch.get()){
+    			addSequential(new DriveToDistance(-0.65, 12, -12.5, 15.0));
     			addParallel(new SetArmToPosition(700,15.0));
     			addSequential(new DriveForTime(0, 0, 0.1));
         		addSequential(new WaitUntilArmInPosition(2.0));
-        		addSequential(new DriveToDistance(0.5, 10, -12.5, 15.0));
+        		addSequential(new DriveToDistance(0.5, 20, -12.5, 15.0));
         		addSequential(new ShootForTime(1.0));//Shoot Switch
         		addSequential(new DriveToDistance(-0.5, 15, -12.5, 15.0));
         		addSequential(new SetArmToPosition(0,15.0));
     		}
     		//switch on right
     		else{
-    			addParallel(new SetArmToPosition(1750,15.0));
+    			addParallel(new SetArmToPosition(2150,15.0));
     			addSequential(new DriveToDistance(-0.4, 44, -9, 15.0));
     			addSequential(new WaitUntilArmInPosition(3.5));
-        		addSequential(new ShootForTime(0.9,1.5));//Shoot Scale
+        		addSequential(new ShootForTime(1.5));//Shoot Scale
         		addSequential(new SetArmToPosition(0,15.0));
     		}
     		
@@ -53,9 +55,9 @@ public class AutoLeftSide extends CommandGroup {
     		addSequential(new DriveToDistance(-.9, 200, 15.0));
     		addSequential(new RotateToAngle(.5, 90, 15.0));
     		addSequential(new DriveToDistance(0.5, 30, 90, 15.0));
-    		addParallel(new SetArmToPosition(1750,15.0));
+    		addParallel(new SetArmToPosition(2150,15.0));
     		addSequential(new WaitUntilArmInPosition(2.5));
-    		addSequential(new ShootForTime(0.9,1.0));//Shoot Scale
+    		addSequential(new ShootForTime(1.0));//Shoot Scale
     		addSequential(new SetArmToPosition(0,15.0));
     	}
     	//Scale on right

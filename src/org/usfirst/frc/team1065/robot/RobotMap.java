@@ -17,9 +17,9 @@ public class RobotMap {
 	//Shooter RPM values
     public static final double ARM_POS_0 = 0.0,//home?
 							   ARM_POS_1 = 0.0,//pickup
-    						   ARM_POS_2 = 700.0,//switch
-    						   ARM_POS_3 = 1250.0,//low scale
-    						   ARM_POS_4 = 1750.0,//medium scale
+    						   ARM_POS_2 = 710.0,//switch
+    						   ARM_POS_3 = 1260.0,//low scale
+    						   ARM_POS_4 = 1760.0,//medium scale
     						   ARM_POS_5 = 2200.0;//Dunk
 	
 	//PID Constants
@@ -36,10 +36,10 @@ public class RobotMap {
 							   ARM_JOYSTICK_MIDDLE = 0.063,
 							   ARM_JOYSTICK_DEADBAND = 0.01,
 							   ARM_RETRACTED_LOWER_LIMIT = -100,
-							   ARM_RETRACTED_HIGHER_LIMIT = 1920;
+							   ARM_RETRACTED_HIGHER_LIMIT = 1930;
     
     //Int Constants
-    public static final int ARM_ERROR = 20;//4098 is 1 full rotation
+    public static final int ARM_ERROR = 35;//4098 is 1 full rotation
 	
 	//PWM Ports
     public static final int LEFT_FRONT_DRIVE_MOTOR_PORT = 0,

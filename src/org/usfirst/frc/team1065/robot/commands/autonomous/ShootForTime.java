@@ -12,7 +12,7 @@ public class ShootForTime extends Command {
     public ShootForTime(double timeout) {
         requires(Robot.m_intake);
         this.setTimeout(timeout);
-        m_speed = .4;
+        m_speed = .35;
     }
     
     public ShootForTime(double speed, double timeout) {
