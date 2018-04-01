@@ -41,7 +41,7 @@ public class AutoRightSide extends CommandGroup {
     		//switch on left
     		else{
     			addParallel(new SetArmToPosition(2150,15.0));
-    			addSequential(new DriveToDistance(-0.4, 44, 7, 15.0));
+    			addSequential(new DriveToDistance(-0.4, 46, 2, 15.0));
     			addSequential(new WaitUntilArmInPosition(3.5));
         		addSequential(new ShootForTime(.25, 1.5));//Shoot Scale
         		addSequential(new SetArmToPosition(0,15.0));
@@ -80,7 +80,7 @@ public class AutoRightSide extends CommandGroup {
     		//switch on right
     		else{
     			addParallel(new SetArmToPosition(2150,15.0));
-    			addSequential(new DriveToDistance(-0.45, 38, -5, 15.0));
+    			addSequential(new DriveToDistance(-0.45, 40, -1, 15.0));
     			addSequential(new WaitUntilArmInPosition(2.0));
         		addSequential(new ShootForTime(.25, 1.0));//Shoot Scale
         		addSequential(new SetArmToPosition(0,15.0));
